@@ -1,0 +1,32 @@
+import java.sql.*;
+
+class Update{
+public static void main(String args[])
+{
+int i=10;
+String n="Shri";
+updateEmployee(Integer.parseInt(i),n);
+}
+
+static void updateEmployee(int id,String name)
+{
+Integer i=Integer.parseInt(id);
+String n=name.toString();
+try
+{
+Connection con;
+DriverManager.registerDriver(new oracle.jdbc.driver.OracleDriver());
+
+con=DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe","SYSTEM","abc123");
+
+Statement stmt2=con.createStatement();
+String s2="update empl set ename=n where eid=i";
+int r=stmt2.executeUpdate(s2);
+
+}
+catch(SQLException e)
+{
+System.out.println(e);
+}
+}
+}
